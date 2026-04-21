@@ -751,30 +751,20 @@
         and the kind of truth diet culture doesn't want you to hear.
       </p>
 
-      <!-- 
-        ═══════════════════════════════════════════════════════════
-        BREVO INTEGRATION INSTRUCTIONS:
-        
-        Replace this form's action URL and hidden fields with your 
-        Brevo (formerly Sendinblue) signup form action.
-        
-        1. In Brevo, go to Contacts → Forms → Create a form
-        2. Copy the form action URL
-        3. Replace action="" below with your Brevo action URL
-        4. Add any hidden fields Brevo requires
-        
-        The form currently submits nowhere — it's a placeholder.
-        ═══════════════════════════════════════════════════════════
-      -->
-      <form class="signup__form fade-in" action="https://a5542460.sibforms.com/serve/MUIFAO_Z00-2kst_QDMafKHo15LfUn5wrv_zpz-UCxgVdYt9nnvhe6oleIxraDySIi8LSXtKmknoMu7-1DxOU-_Xx443KmTaofNYo0Zb8lWnzFkAKOCJmMdB4-Pnc23smOopYIF3Z2XRbG_yE7FvBQPdcycqpNsuWGMjvg2W1u-0fqdgkQsixBFEYZ_uIXSPTe_VNDbcGNrcE4eSSw==" method="POST" id="newsletter-form">
+      <!-- Brevo signup form -->
+      <form class="signup__form fade-in" method="POST" action="https://a5542460.sibforms.com/serve/MUIFAO_Z00-2kst_QDMafKHo15LfUn5wrv_zpz-UCxgVdYt9nnvhe6oleIxraDySIi8LSXtKmknoMu7-1DxOU-_Xx443KmTaofNYo0Zb8lWnzFkAKOCJmMdB4-Pnc23smOopYIF3Z2XRbG_yE7FvBQPdcycqpNsuWGMjvg2W1u-0fqdgkQsixBFEYZ_uIXSPTe_VNDbcGNrcE4eSSw==" data-type="subscription">
         <input 
           type="email" 
-          name="email" 
+          name="EMAIL" 
           placeholder="Your email address" 
           required 
+          autocomplete="off"
           aria-label="Email address"
         >
         <button type="submit">Send Me the Self-Assessment</button>
+        <!-- Brevo honeypot — must stay hidden & empty -->
+        <input type="text" name="email_address_check" value="" style="display:none;">
+        <input type="hidden" name="locale" value="en">
       </form>
       <p class="signup__disclaimer fade-in">
         No spam, ever. Just grace in your inbox. You can unsubscribe anytime.
@@ -824,8 +814,6 @@
       nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
 
-    // Placeholder form — replace action URL with Brevo and remove this block
-    // Brevo should redirect to thanks.html after successful submission
   </script>
 
 </body>
