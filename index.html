@@ -766,7 +766,7 @@
         The form currently submits nowhere — it's a placeholder.
         ═══════════════════════════════════════════════════════════
       -->
-      <form class="signup__form fade-in" action="#" method="POST" id="newsletter-form">
+      <form class="signup__form fade-in" action="https://a5542460.sibforms.com/serve/MUIFAO_Z00-2kst_QDMafKHo15LfUn5wrv_zpz-UCxgVdYt9nnvhe6oleIxraDySIi8LSXtKmknoMu7-1DxOU-_Xx443KmTaofNYo0Zb8lWnzFkAKOCJmMdB4-Pnc23smOopYIF3Z2XRbG_yE7FvBQPdcycqpNsuWGMjvg2W1u-0fqdgkQsixBFEYZ_uIXSPTe_VNDbcGNrcE4eSSw==" method="POST" id="newsletter-form">
         <input 
           type="email" 
           name="email" 
@@ -824,14 +824,8 @@
       nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
 
-    // Placeholder form handling (replace with Brevo integration)
-    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = e.target.querySelector('input[type="email"]').value;
-      // TODO: Replace with Brevo API call or form action
-      alert('Thanks for signing up! (This is a placeholder — connect Brevo to make it live.)');
-      e.target.reset();
-    });
+    // Placeholder form — replace action URL with Brevo and remove this block
+    // Brevo should redirect to thanks.html after successful submission
   </script>
 
 </body>
