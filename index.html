@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Faith-based nutrition coaching for Christian mothers. Registered dietitian Susan Conradie helps you heal your relationship with food — with grace, not guilt.">
+  <title>@dietitiansusan — Faith-Based Nutrition Coaching for Christian Mothers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Using EB Garamond as a refined web alternative to Georgia for display, 
+       falling back to Georgia. Keeping Arial/system sans for body per brand guide. -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <style>
+    /* ── CSS Reset ────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Brand Tokens (from style guide v1.1) ────────────────── */
+    :root {
+      --navy:        #1A3A5C;
+      --navy-light:  #4A6B8A;
+      --accent-blue: #8FA8BC;
+      --beige:       #F5EFE6;
+      --beige-dark:  #E8DDC9;
+      --body-text:   #2C2C2C;
+      --muted:       #6B6B6B;
+      --white:       #FFFFFF;
+      --border:      #D8D0C2;
+
+      --font-display: 'EB Garamond', Georgia, 'Times New Roman', serif;
+      --font-body:    Arial, Helvetica, sans-serif;
+
+      --max-width:   720px;
+      --section-py:  5rem;
+    }
+
+    /* ── Base ─────────────────────────────────────────────────── */
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--body-text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--navy); }
+
+    /* ── Utility ──────────────────────────────────────────────── */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); border: 0;
+    }
+
+    /* ── Fade-in animation ────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Nav ──────────────────────────────────────────────────── */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--beige-dark);
+      transition: box-shadow 0.3s ease;
+    }
+    .site-nav.scrolled {
+      box-shadow: 0 2px 20px rgba(26,58,92,0.06);
+    }
+    .site-nav__inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav__brand {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .site-nav__brand span {
+      color: var(--accent-blue);
+      font-weight: 400;
+    }
+    .site-nav__links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+    .site-nav__links a {
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: var(--navy-light);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .site-nav__links a:hover { color: var(--navy); }
+
+    /* ── Hero ─────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1.5rem 4rem;
+      background: var(--beige);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(143,168,188,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(26,58,92,0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+    }
+    .hero__credential {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy-light);
+      font-weight: 600;
+      margin-bottom: 1.8rem;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--accent-blue);
+      border-radius: 2px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 500;
+      line-height: 1.25;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .hero__sub {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--body-text);
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero__cta {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.4rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.2s ease;
+    }
+    .hero__cta:hover {
+      background: var(--navy-light);
+      transform: translateY(-1px);
+    }
+    .hero__scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-blue);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      animation: gentleBounce 2.5s ease-in-out infinite;
+    }
+    .hero__scroll-hint svg {
+      width: 20px; height: 20px;
+      stroke: var(--accent-blue);
+    }
+    @keyframes gentleBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── Section base ────────────────────────────────────────── */
+    section {
+      padding: var(--section-py) 0;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-blue);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 1.5rem;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: var(--accent-blue);
+      margin-top: 1rem;
+    }
+
+    /* ── "Is this you?" section ───────────────────────────────── */
+    .is-this-you {
+      background: var(--white);
+    }
+    .is-this-you__grid {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .is-this-you__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem 1.4rem;
+      background: var(--beige);
+      border-left: 3px solid var(--accent-blue);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .is-this-you__item .check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      margin-top: 2px;
+    }
+    .is-this-you__item .check circle { fill: var(--navy); }
+    .is-this-you__item .check path { stroke: var(--white); }
+
+    /* ── About Susan ─────────────────────────────────────────── */
+    .about {
+      background: var(--beige);
+    }
+    .about__layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .about p {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+    .about__credentials {
+      margin-top: 1.5rem;
+      padding: 1.2rem 1.4rem;
+      background: var(--white);
+      border: 1px solid var(--beige-dark);
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .about__credentials strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    /* ── Scripture callout ────────────────────────────────────── */
+    .scripture {
+      background: var(--white);
+      text-align: center;
+      padding: 4rem 1.5rem;
+    }
+    .scripture blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-style: italic;
+      color: var(--navy-light);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto 0.8rem;
+    }
+    .scripture cite {
+      font-family: var(--font-display);
+      font-style: normal;
+      font-size: 0.95rem;
+      color: var(--accent-blue);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── What I believe / approach ────────────────────────────── */
+    .approach {
+      background: var(--white);
+    }
+    .approach__grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .approach__card {
+      padding: 1.8rem;
+      border: 1px solid var(--beige-dark);
+      background: var(--beige);
+    }
+    .approach__card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.8rem;
+    }
+    .approach__card p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--body-text);
+    }
+
+    @media (min-width: 640px) {
+      .approach__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* ── The Nourished Table teaser ───────────────────────────── */
+    .program {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+    }
+    .program .section-label {
+      color: var(--accent-blue);
+    }
+    .program h2 {
+      color: var(--white);
+    }
+    .program h2::after {
+      margin-left: auto;
+      margin-right: auto;
+      background: var(--accent-blue);
+    }
+    .program p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.8);
+      max-width: 540px;
+      margin: 0 auto 1rem;
+    }
+    .program__name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .program__pillars {
+      list-style: none;
+      margin: 2rem auto;
+      max-width: 400px;
+      text-align: left;
+    }
+    .program__pillars li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(143,168,188,0.25);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.85);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .program__pillars li:last-child { border: none; }
+    .program__pillars .pip {
+      width: 8px; height: 8px;
+      background: var(--accent-blue);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .program__note {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2rem;
+    }
+
+    /* ── Newsletter / Lead Magnet CTA ────────────────────────── */
+    .signup {
+      background: var(--beige);
+      text-align: center;
+    }
+    .signup h2::after {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .signup p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto 2rem;
+    }
+    .signup__form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .signup__form input[type="email"] {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border: 1px solid var(--beige-dark);
+      background: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--body-text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .signup__form input[type="email"]:focus {
+      border-color: var(--navy);
+    }
+    .signup__form input[type="email"]::placeholder {
+      color: var(--accent-blue);
+    }
+    .signup__form button {
+      width: 100%;
+      padding: 1rem;
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s ease;
+    }
+    .signup__form button:hover {
+      background: var(--navy-light);
+    }
+    .signup__disclaimer {
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Footer ───────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--white);
+      border-top: 1px solid var(--beige-dark);
+      padding: 2.5rem 0;
+      text-align: center;
+    }
+    .site-footer__sig {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+    .site-footer__sig strong {
+      font-weight: 700;
+    }
+    .site-footer__role {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .site-footer__social {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .site-footer__social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 40px;
+      border: 1px solid var(--beige-dark);
+      color: var(--navy-light);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .site-footer__social a:hover {
+      border-color: var(--navy);
+      color: var(--navy);
+    }
+    .site-footer__social svg {
+      width: 18px; height: 18px;
+      fill: currentColor;
+    }
+    .site-footer__legal {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    /* ── Responsive ───────────────────────────────────────────── */
+    @media (min-width: 768px) {
+      :root { --section-py: 6rem; }
+
+      .about__layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .site-nav__links { gap: 1.2rem; }
+      .site-nav__links a { font-size: 0.78rem; }
+      .hero { min-height: 90vh; padding-top: 5rem; }
+      :root { --section-py: 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────────── -->
+  <nav class="site-nav" role="navigation" aria-label="Main">
+    <div class="site-nav__inner">
+      <a href="#" class="site-nav__brand">Susan Conradie <span>RD</span></a>
+      <ul class="site-nav__links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#approach">My Approach</a></li>
+        <li><a href="#signup">Free Quiz</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────────── -->
+  <section class="hero" id="home">
+    <div class="hero__content">
+      <div class="hero__credential">Registered Dietitian · 13 Years</div>
+      <h1>"You don't need another diet. You need to remember who you were made to be."</h1>
+      <p class="hero__sub">
+        Faith-based nutrition coaching for Christian mothers who are tired of the diet cycle — 
+        and ready to nourish their bodies, hearts, and homes with grace instead of guilt.
+      </p>
+      <a href="#signup" class="hero__cta">Take the Free Self-Assessment</a>
+    </div>
+    <div class="hero__scroll-hint" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ── Is This You? ────────────────────────────────────────── -->
+  <section class="is-this-you" id="is-this-you">
+    <div class="container">
+      <div class="section-label fade-in">Sound familiar?</div>
+      <h2 class="fade-in">You've tried everything.</h2>
+      <p class="fade-in" style="margin-bottom: 1.5rem; font-size: 0.95rem;">
+        You've counted calories, cut carbs, started Monday again more times than you can count. 
+        And somewhere along the way, food stopped being a gift and started feeling like a test you keep failing.
+      </p>
+      <div class="is-this-you__grid">
+        <div class="is-this-you__item fade-in">
+          <svg class="check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12"/><path d="M7 12.5l3 3 7-7" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>You feel guilty after eating — even when you're hungry</span>
+        </div>
+        <div class="is-this-you__item fade-in">
+          <svg class="check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12"/><path d="M7 12.5l3 3 7-7" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>You've lost weight before, but it always comes back (and brings friends)</span>
+        </div>
+        <div class="is-this-you__item fade-in">
+          <svg class="check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12"/><path d="M7 12.5l3 3 7-7" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>You eat well "for the kids" but forget to feed yourself with the same care</span>
+        </div>
+        <div class="is-this-you__item fade-in">
+          <svg class="check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12"/><path d="M7 12.5l3 3 7-7" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>You know God didn't design you to live at war with your body — but you don't know how to stop</span>
+        </div>
+      </div>
+      <p class="fade-in" style="margin-top: 2rem; font-size: 0.95rem;">
+        If any of that sounds like your story, you're in the right place. And you are not the problem. <strong style="color: var(--navy);">The diets are.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Scripture ────────────────────────────────────────────── -->
+  <div class="scripture fade-in">
+    <blockquote>
+      "He heals the broken-hearted and binds up their wounds."
+    </blockquote>
+    <cite>— Psalm 147:3</cite>
+  </div>
+
+  <!-- ── About Susan ─────────────────────────────────────────── -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about__layout">
+        <div>
+          <div class="section-label fade-in">Meet Susan</div>
+          <h2 class="fade-in">A dietitian, a mom, and a woman who gets it.</h2>
+          <p class="fade-in">
+            I'm Susan — a registered dietitian with 13 years of clinical experience, 
+            a homeschooling mom, and someone who has seen firsthand how diet culture 
+            steals the joy right out of mealtimes.
+          </p>
+          <p class="fade-in">
+            For years I watched women walk into my consulting room carrying the same 
+            weight — not on their bodies, but on their hearts. Guilt. Shame. The quiet 
+            belief that if they could just try harder, eat less, be more disciplined, 
+            everything would finally be okay.
+          </p>
+          <p class="fade-in">
+            But that's not what I saw clinically. What I saw was biology being blamed 
+            on character. I saw mothers pouring everything into their families while 
+            running on empty themselves. And I saw that the real healing — the lasting 
+            kind — doesn't start with a meal plan. It starts with remembering who you 
+            were made to be.
+          </p>
+          <p class="fade-in">
+            That's what I help women do now. Not through another set of rules, but 
+            through grace, community, and the kind of practical guidance that actually 
+            fits into a real mother's life.
+          </p>
+          <div class="about__credentials fade-in">
+            <strong>Susan Conradie, RD</strong><br>
+            BSc Dietetics · Registered with the HPCSA<br>
+            13 years clinical experience · @dietitiansusan
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Approach ─────────────────────────────────────────────── -->
+  <section class="approach" id="approach">
+    <div class="container">
+      <div class="section-label fade-in">My Approach</div>
+      <h2 class="fade-in">Grace, not guilt. Adding, not subtracting.</h2>
+      <p class="fade-in" style="margin-bottom: 2rem; font-size: 0.95rem; max-width: 560px;">
+        Everything I teach is grounded in clinical evidence and rooted in Biblical truth. 
+        Here's what makes this different from every diet you've tried before.
+      </p>
+      <div class="approach__grid">
+        <div class="approach__card fade-in">
+          <h3>Add, Don't Subtract</h3>
+          <p>
+            Instead of cutting out the foods you love, we focus on adding in the nourishment 
+            your body is actually asking for. No food is "off-limits." Your body is not the enemy.
+          </p>
+        </div>
+        <div class="approach__card fade-in">
+          <h3>Pause &amp; Pray</h3>
+          <p>
+            Before you open the fridge, pause. Are you Hungry, Anxious, Lonely, or Tired? 
+            This simple clinical tool — the HALT method — helps you respond to what your 
+            heart really needs.
+          </p>
+        </div>
+        <div class="approach__card fade-in">
+          <h3>Three-Tier Goals</h3>
+          <p>
+            Minimum. Ideal. Outrageous. Instead of all-or-nothing perfectionism, you set 
+            three levels for every goal — so even on the hardest days, you're still moving forward.
+          </p>
+        </div>
+        <div class="approach__card fade-in">
+          <h3>Biblical Stewardship</h3>
+          <p>
+            Your body is not a project to fix — it's a gift to steward. We ground every 
+            step in the truth that God made food to be enjoyed and your body to be honoured.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── The Nourished Table teaser ──────────────────────────── -->
+  <section class="program" id="program">
+    <div class="container">
+      <div class="section-label fade-in">Coming Soon</div>
+      <div class="program__name fade-in">The Nourished Table</div>
+      <h2 class="fade-in">An 8-week group coaching journey for Christian mothers.</h2>
+      <p class="fade-in">
+        Not another course you watch alone. A small community of women doing the work 
+        together — with my personal guidance walking alongside you every step.
+      </p>
+      <ul class="program__pillars fade-in">
+        <li><span class="pip"></span>Weekly live group coaching calls</li>
+        <li><span class="pip"></span>Video teachings you can watch on your schedule</li>
+        <li><span class="pip"></span>A curated community of Christian mothers</li>
+        <li><span class="pip"></span>Personal async support from Susan</li>
+        <li><span class="pip"></span>The facilitated forgiveness work you can't do alone</li>
+        <li><span class="pip"></span>Companion journal with weekly reflection prompts</li>
+      </ul>
+      <p class="program__note fade-in">
+        The first cohort is forming soon. Sign up below to be the first to know.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Signup / Lead Magnet ────────────────────────────────── -->
+  <section class="signup" id="signup">
+    <div class="container">
+      <div class="section-label fade-in">Stay Close</div>
+      <h2 class="fade-in">Am I a chronic dieter?</h2>
+      <p class="fade-in">
+        Take the free self-assessment and find out which pattern is keeping you stuck — 
+        whether you're <em>The Controlled Eater</em>, <em>The Guilt Cyclist</em>, or 
+        <em>The Exhausted Rule-Follower</em>. You'll get a personal note from Susan for 
+        your profile, plus her weekly newsletter with practical tools, real encouragement, 
+        and the kind of truth diet culture doesn't want you to hear.
+      </p>
+
+      <!-- 
+        ═══════════════════════════════════════════════════════════
+        BREVO INTEGRATION INSTRUCTIONS:
+        
+        Replace this form's action URL and hidden fields with your 
+        Brevo (formerly Sendinblue) signup form action.
+        
+        1. In Brevo, go to Contacts → Forms → Create a form
+        2. Copy the form action URL
+        3. Replace action="" below with your Brevo action URL
+        4. Add any hidden fields Brevo requires
+        
+        The form currently submits nowhere — it's a placeholder.
+        ═══════════════════════════════════════════════════════════
+      -->
+      <form class="signup__form fade-in" action="#" method="POST" id="newsletter-form">
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Your email address" 
+          required 
+          aria-label="Email address"
+        >
+        <button type="submit">Send Me the Self-Assessment</button>
+      </form>
+      <p class="signup__disclaimer fade-in">
+        No spam, ever. Just grace in your inbox. You can unsubscribe anytime.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Footer ──────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="site-footer__sig">Blessings, <strong>Susan</strong></p>
+      <p class="site-footer__role">Susan Conradie, RD · @dietitiansusan</p>
+      <div class="site-footer__social">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/dietitiansusan/" target="_blank" rel="noopener" aria-label="Follow on Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <!-- Email -->
+        <a href="mailto:susan@healthybites.co.za" aria-label="Send email">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/healthybitesdietetics/" target="_blank" rel="noopener" aria-label="Follow on Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+      <p class="site-footer__legal">&copy; 2026 Susan Conradie. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ──────────────────────────────────────────────── -->
+  <script>
+    // Scroll-triggered fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Nav shadow on scroll
+    const nav = document.querySelector('.site-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // Placeholder form handling (replace with Brevo integration)
+    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = e.target.querySelector('input[type="email"]').value;
+      // TODO: Replace with Brevo API call or form action
+      alert('Thanks for signing up! (This is a placeholder — connect Brevo to make it live.)');
+      e.target.reset();
+    });
+  </script>
+
+</body>
+</html>
