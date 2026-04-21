@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Thank you for signing up — your free self-assessment is on its way.">
+  <title>You're In — @dietitiansusan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #1A3A5C;
+      --navy-light:  #4A6B8A;
+      --accent-blue: #8FA8BC;
+      --beige:       #F5EFE6;
+      --beige-dark:  #E8DDC9;
+      --body-text:   #2C2C2C;
+      --muted:       #6B6B6B;
+      --white:       #FFFFFF;
+
+      --font-display: 'EB Garamond', Georgia, 'Times New Roman', serif;
+      --font-body:    Arial, Helvetica, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--body-text);
+      background: var(--beige);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--navy); }
+
+    /* ── Nav (same as main page) ─────────────────────────────── */
+    .site-nav {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--beige-dark);
+    }
+    .site-nav__inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav__brand {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+    }
+    .site-nav__brand span {
+      color: var(--accent-blue);
+      font-weight: 400;
+    }
+
+    /* ── Thank-you card ──────────────────────────────────────── */
+    .thanks {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .thanks__card {
+      max-width: 540px;
+      width: 100%;
+      background: var(--white);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      border: 1px solid var(--beige-dark);
+      animation: fadeUp 0.6s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .thanks__icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1.8rem;
+      background: var(--beige);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .thanks__icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--navy);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .thanks__card h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 1.2rem;
+    }
+
+    .thanks__rule {
+      width: 60px;
+      height: 2px;
+      background: var(--accent-blue);
+      margin: 0 auto 1.5rem;
+      border: none;
+    }
+
+    .thanks__card p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+      color: var(--body-text);
+    }
+
+    .thanks__inbox-note {
+      margin-top: 1.5rem;
+      padding: 1.2rem 1.4rem;
+      background: var(--beige);
+      border-left: 3px solid var(--accent-blue);
+      text-align: left;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--body-text);
+    }
+    .thanks__inbox-note strong {
+      color: var(--navy);
+    }
+
+    /* ── Scripture ────────────────────────────────────────────── */
+    .thanks__scripture {
+      margin-top: 2rem;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--navy-light);
+      line-height: 1.6;
+    }
+    .thanks__scripture cite {
+      display: block;
+      font-style: normal;
+      font-size: 0.85rem;
+      color: var(--accent-blue);
+      margin-top: 0.4rem;
+    }
+
+    /* ── CTA links ───────────────────────────────────────────── */
+    .thanks__links {
+      margin-top: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .thanks__link-primary {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      transition: background 0.25s ease;
+    }
+    .thanks__link-primary:hover {
+      background: var(--navy-light);
+    }
+    .thanks__link-secondary {
+      font-size: 0.85rem;
+      color: var(--navy-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .thanks__link-secondary:hover {
+      color: var(--navy);
+      text-decoration: underline;
+    }
+
+    /* ── Footer ──────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--white);
+      border-top: 1px solid var(--beige-dark);
+      padding: 1.5rem 0;
+      text-align: center;
+    }
+    .site-footer__sig {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: var(--navy);
+    }
+    .site-footer__sig strong { font-weight: 700; }
+    .site-footer__role {
+      font-size: 0.75rem;
+      font-style: italic;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    @media (max-width: 480px) {
+      .thanks__card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="site-nav__inner">
+      <a href="index.html" class="site-nav__brand">Susan Conradie <span>RD</span></a>
+    </div>
+  </nav>
+
+  <main class="thanks">
+    <div class="thanks__card">
+
+      <div class="thanks__icon">
+        <svg viewBox="0 0 24 24"><path d="M22 12l-10 7L2 12"/><path d="M2 12V4a2 2 0 012-2h16a2 2 0 012 2v8"/><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 7L2 4"/></svg>
+      </div>
+
+      <h1>Check your inbox — there's a gift waiting.</h1>
+      <hr class="thanks__rule">
+
+      <p>
+        Your <em>"Am I a Chronic Dieter?"</em> self-assessment is on its way to your 
+        inbox right now. It should arrive within a few minutes.
+      </p>
+
+      <div class="thanks__inbox-note">
+        <strong>Can't find it?</strong> Check your spam or promotions folder — and drag 
+        the email to your primary inbox so you don't miss future letters from me. 
+        They're worth opening, I promise.
+      </div>
+
+      <div class="thanks__scripture">
+        "For I know the plans I have for you, declares the Lord — plans to prosper you 
+        and not to harm you, plans to give you hope and a future."
+        <cite>— Jeremiah 29:11</cite>
+      </div>
+
+      <div class="thanks__links">
+        <a href="https://www.instagram.com/dietitiansusan/" target="_blank" rel="noopener" class="thanks__link-primary">
+          Follow @dietitiansusan on Instagram
+        </a>
+        <a href="index.html" class="thanks__link-secondary">
+          &larr; Back to the homepage
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p class="site-footer__sig">Blessings, <strong>Susan</strong></p>
+    <p class="site-footer__role">Susan Conradie, RD · @dietitiansusan</p>
+  </footer>
+
+</body>
+</html>
