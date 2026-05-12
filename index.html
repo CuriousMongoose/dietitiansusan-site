@@ -427,30 +427,64 @@
       opacity: 0.5;
     }
 
-    /* 8 weeks — compact list */
+    /* 8 weeks — expandable list */
     .program__weeks {
-      list-style: none;
       display: grid;
       grid-template-columns: 1fr;
       gap: 0.5rem;
-      max-width: 520px;
+      max-width: 560px;
       margin: 0 auto 4rem;
       text-align: left;
     }
     .program__week {
-      padding: 0.7rem 1.1rem;
       background: rgba(255,255,255,0.04);
       border-left: 2px solid var(--accent-blue);
+    }
+    .program__week summary {
+      padding: 0.85rem 1.1rem;
       font-family: var(--font-display);
       font-size: 1rem;
       font-weight: 500;
       color: var(--white);
       letter-spacing: 0.01em;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      user-select: none;
+      transition: color 0.2s ease;
     }
-    @media (min-width: 640px) {
-      .program__weeks {
-        grid-template-columns: 1fr 1fr;
-      }
+    .program__week summary::-webkit-details-marker { display: none; }
+    .program__week summary:hover { color: var(--beige); }
+    .program__week-toggle {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border: 1px solid var(--accent-blue);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-blue);
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      line-height: 1;
+      font-weight: 300;
+      transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+    .program__week[open] .program__week-toggle {
+      transform: rotate(45deg);
+      background: var(--accent-blue);
+      color: var(--navy);
+    }
+    .program__week-desc {
+      padding: 0 1.1rem 1.1rem;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.78);
     }
 
     /* Details: investment + dates side by side */
@@ -868,16 +902,92 @@
 
       <!-- The eight weeks -->
       <h3 class="program__subhead fade-in">The Eight Weeks</h3>
-      <ul class="program__weeks fade-in">
-        <li class="program__week">Who You Were Made to Be</li>
-        <li class="program__week">Breaking the Diet Cycle</li>
-        <li class="program__week">Add, Don't Subtract</li>
-        <li class="program__week">Sacred Rest</li>
-        <li class="program__week">Listening to Your Body</li>
-        <li class="program__week">The Healing Table</li>
-        <li class="program__week">Nourishing Your Family</li>
-        <li class="program__week">The Road Ahead</li>
-      </ul>
+      <div class="program__weeks fade-in">
+        <details class="program__week">
+          <summary>
+            <span>Week 1 &middot; Who You Were Made to Be</span>
+            <span class="program__week-toggle" aria-hidden="true">+</span>
+          </summary>
+          <p class="program__week-desc">
+            Identity, before anything else. You don't need another diet &mdash;
+            you need to remember who you were made to be. We begin with the
+            foundation everything else rests on.
+          </p>
+        </details>
+        <details class="program__week">
+          <summary>
+            <span>Week 2 &middot; Breaking the Diet Cycle</span>
+            <span class="program__week-toggle" aria-hidden="true">+</span>
+          </summary>
+          <p class="program__week-desc">
+            Why willpower keeps failing you. The reason isn't a character flaw &mdash;
+            it's a system designed to fail. And the stakes are higher than your jeans.
+          </p>
+        </details>
+        <details class="program__week">
+          <summary>
+            <span>Week 3 &middot; Add, Don't Subtract</span>
+            <span class="program__week-toggle" aria-hidden="true">+</span>
+          </summary>
+          <p class="program__week-desc">
+            The only nutrition rule I give my clients. God's economy has always
+            been addition &mdash; He adds grace, love, forgiveness. We follow
+            His lead at the table too.
+          </p>
+        </details>
+        <details class="program__week">
+          <summary>
+            <span>Week 4 &middot; Sacred Rest</span>
+            <span class="program__week-toggle" aria-hidden="true">+</span>
+          </summary>
+          <p class="program__week-desc">
+            Rest as obedience, not laziness. Rest is not weakness &mdash; it is
+            wisdom. You were made for rhythm, not relentlessness.
+          </p>
+        </details>
+        <details class="program__week">
+          <summary>
+            <span>Week 5 &middot; Listening to Your Body</span>
+            <span class="program__week-toggle" aria-hidden="true">+</span>
+          </summary>
+          <p class="program__week-desc">
+            Rebuilding trust with your own body. Your body is a temple &mdash;
+            not because of what you have done with it, but because of Who lives in it.
+          </p>
+        </details>
+        <details class="program__week">
+          <summary>
+            <span>Week 6 &middot; The Healing Table</span>
+            <span class="program__week-toggle" aria-hidden="true">+</span>
+          </summary>
+          <p class="program__week-desc">
+            The forgiveness work. The week most women say changed everything.
+            Inner healing begins with forgiveness &mdash; and the source of that
+            forgiveness is not yourself. It is Christ.
+          </p>
+        </details>
+        <details class="program__week">
+          <summary>
+            <span>Week 7 &middot; Nourishing Your Family</span>
+            <span class="program__week-toggle" aria-hidden="true">+</span>
+          </summary>
+          <p class="program__week-desc">
+            Feeding your family without passing on diet culture. The family
+            table is where the next generation learns what food is for.
+          </p>
+        </details>
+        <details class="program__week">
+          <summary>
+            <span>Week 8 &middot; The Road Ahead</span>
+            <span class="program__week-toggle" aria-hidden="true">+</span>
+          </summary>
+          <p class="program__week-desc">
+            The letter you'll write to your future self. Vision is the
+            destination. Excellence &mdash; showing up again &mdash; is the path.
+            Perfection was never the standard.
+          </p>
+        </details>
+      </div>
 
       <!-- Investment + dates -->
       <div class="program__details fade-in">
