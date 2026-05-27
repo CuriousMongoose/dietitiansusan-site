@@ -367,6 +367,77 @@
       }
     }
 
+    /* ── Latest from the Blog ─────────────────────────────────── */
+    .blog-teaser { background: var(--white); }
+    .blog-teaser__grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 720px) {
+      .blog-teaser__grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .blog-teaser__card {
+      display: flex;
+      flex-direction: column;
+      padding: 1.6rem;
+      background: var(--beige);
+      border: 1px solid var(--beige-dark);
+      text-decoration: none;
+      color: var(--body-text);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .blog-teaser__card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(26,58,92,0.08);
+      border-color: var(--accent-blue);
+    }
+    .blog-teaser__tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-blue);
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+    }
+    .blog-teaser__card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+    }
+    .blog-teaser__card p {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--body-text);
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+    .blog-teaser__meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .blog-teaser__all { text-align: center; margin-top: 2.5rem; }
+    .blog-teaser__all a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-blue);
+      padding-bottom: 3px;
+      transition: gap 0.2s ease;
+    }
+    .blog-teaser__all a:hover { gap: 0.75rem; }
+
     /* ── The Nourished Table teaser ───────────────────────────── */
     .program {
       background: var(--navy);
@@ -739,6 +810,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#approach">My Approach</a></li>
         <li><a href="#program">The Program</a></li>
+        <li><a href="/blog/">Blog</a></li>
         <li><a href="#signup">Free Quiz</a></li>
       </ul>
     </div>
@@ -1039,6 +1111,50 @@
         it's a fit, or a kind suggestion of a different next step if I think the
         timing isn't right yet. The seat is yours to claim, not yours to lose.
       </p>
+    </div>
+  </section>
+
+  <!-- ── Latest from the Blog ────────────────────────────────── -->
+  <section class="blog-teaser" id="blog">
+    <div class="container">
+      <div class="section-label fade-in">Notes from the Table</div>
+      <h2 class="fade-in">Latest from the blog</h2>
+      <p class="fade-in" style="margin-bottom: 0.5rem; font-size: 0.95rem; max-width: 560px;">
+        Short, generous reflections on food, faith, and freedom — the same teaching I send to
+        my inbox, free to read any time.
+      </p>
+      <div class="blog-teaser__grid">
+        <a class="blog-teaser__card fade-in" href="/blog/eating-to-the-glory-of-god.html">
+          <div class="blog-teaser__tag">Watch &middot; Full talk</div>
+          <h3>Eating to the Glory of God</h3>
+          <p>
+            A grace-first talk on food, body, and health for Christian women — identity, the
+            diet cycle, forgiveness, and the invitation to receive.
+          </p>
+          <span class="blog-teaser__meta">27 May 2026 &middot; 44 min watch</span>
+        </a>
+        <a class="blog-teaser__card fade-in" href="/blog/add-dont-subtract.html">
+          <div class="blog-teaser__tag">Letters &middot; The framework</div>
+          <h3>Add, Don't Subtract</h3>
+          <p>
+            The question is never what to take off the table. God's economy has always been
+            addition — and your body settles when it's fed, not policed.
+          </p>
+          <span class="blog-teaser__meta">21 May 2026 &middot; 4 min read</span>
+        </a>
+        <a class="blog-teaser__card fade-in" href="/blog/setting-your-table.html">
+          <div class="blog-teaser__tag">Letters &middot; A small practice</div>
+          <h3>Setting Your Table</h3>
+          <p>
+            How you eat shapes your body almost as powerfully as what you eat. A small weekly
+            practice for slowing down and tasting the gift.
+          </p>
+          <span class="blog-teaser__meta">13 May 2026 &middot; 5 min read</span>
+        </a>
+      </div>
+      <div class="blog-teaser__all fade-in">
+        <a href="/blog/">Read all notes from the table &rarr;</a>
+      </div>
     </div>
   </section>
 
