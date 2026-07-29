@@ -52,6 +52,18 @@
       <a class="post-card__more" href="eating-to-the-glory-of-god.html">Watch the talk &rarr;</a>
     </article>
 
+    <article class="post-card" id="post-nl10" data-release="2026-07-30T07:30:00+02:00">
+      <div class="post-card__label">Letters<span class="post-card__type">Return to the Manufacturer</span></div>
+      <h2><a href="return-to-the-manufacturer.html">Return to the Manufacturer</a></h2>
+      <p class="post-card__meta">30 July 2026 &middot; 5 min read</p>
+      <p class="post-card__excerpt">
+        Something feels off — the energy, the fit of things, the biscuit-tin evenings. And
+        right on cue comes the pull: <em>maybe I just need a new plan.</em> Why the answer is
+        almost never a diet, and where to take the "off" instead.
+      </p>
+      <a class="post-card__more" href="return-to-the-manufacturer.html">Read &rarr;</a>
+    </article>
+
     <article class="post-card">
       <div class="post-card__label">Letters<span class="post-card__type">Ornaments vs. instruments</span></div>
       <h2><a href="ornaments-and-instruments.html">Ornaments and Instruments</a></h2>
@@ -187,6 +199,11 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
+
+    // Hide scheduled posts until their release time (client-side gate; low risk by design)
+    document.querySelectorAll('.post-card[data-release]').forEach((card) => {
+      if (new Date() < new Date(card.dataset.release)) card.style.display = 'none';
+    });
   </script>
 
 </body>
